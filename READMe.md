@@ -48,3 +48,8 @@ make sure with the two-liner, indent second line and press enter)
 ![alt text](image-19.png)
 ![alt text](image-18.png)
 ![alt text](image-17.png)
+
+# Linting and formatting
+
+![alt text](image-20.png)
+![alt text](image-21.png)
