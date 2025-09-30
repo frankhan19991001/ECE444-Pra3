@@ -33,3 +33,11 @@
 # SQLAlchemy
 
 ![alt text](image-12.png)
+
+# Search Page
+
+![alt text](image-13.png)
+![alt text](image-14.png)
+
+(under flaskr-tdd, run 'python -m project.app' after running ![alt text](image-15.png) in shell. 
+make sure with the two-liner, indent second line and press enter)
