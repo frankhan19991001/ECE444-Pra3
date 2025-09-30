@@ -41,3 +41,10 @@
 
 (under flaskr-tdd, run 'python -m project.app' after running ![alt text](image-15.png) in shell. 
 make sure with the two-liner, indent second line and press enter)
+
+# Postgres
+
+![alt text](image-16.png)
+![alt text](image-19.png)
+![alt text](image-18.png)
+![alt text](image-17.png)
