@@ -96,18 +96,24 @@ def logout():
     return redirect(url_for("index"))
 
 
-@app.route("/delete/<int:post_id>", methods=["GET"])
+@app.route("/delete/<int:post_id>", methods=["GET", "POST"])
 def delete_entry(post_id):
-    """Deletes post from database."""
-    result = {"status": 0, "message": "Error"}
+    if not session.get("logged_in"):
+        abort(401)
+    if request.method == "GET":
+        # Optional: require a query param to reduce accidental deletions
+        # if request.args.get("confirm") != "1": abort(400)
+        pass
     try:
-        db.session.query(models.Post).filter_by(id=post_id).delete()
+        deleted = db.session.query(models.Post).filter_by(id=post_id).delete()
+        if deleted == 0:
+            return jsonify({"status": 0, "message": "Post not found"}), 404
         db.session.commit()
-        result = {"status": 1, "message": "Post Deleted"}
         flash("The entry was deleted.")
+        return jsonify({"status": 1, "message": "Post Deleted"})
     except Exception as e:
-        result = {"status": 0, "message": repr(e)}
-    return jsonify(result)
+        db.session.rollback()
+        return jsonify({"status": 0, "message": repr(e)}), 500
 
 
 if __name__ == "__main__":
